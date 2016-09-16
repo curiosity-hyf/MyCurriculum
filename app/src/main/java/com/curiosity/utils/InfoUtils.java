@@ -52,16 +52,17 @@ public class InfoUtils {
 
     /**
      * 获取所有课程信息
+     *
      * @param curriculums 所有课表 Dom
      * @return 所有课程信息
      */
     public static List<CurriculumInfo> getAllCurriInfo(List<Document> curriculums) {
         List<CurriculumInfo> curriculumInfos = new ArrayList<>();
-//        for (Document doc : curriculums) {
-        Document doc = curriculums.get(4);
-        if(doc.body().toString().contains("您本学期课所选学分小于 1.50分")) {
-            System.out.println("false!!!");
-        }
+        for (Document doc : curriculums) {
+//        Document doc = curriculums.get(4);
+            if (doc.body().toString().contains("您本学期课所选学分小于 1.50分")) {
+                System.out.println("false!!!");
+            }
 //        System.out.println(doc.body().toString());
             doc = Jsoup.parse(doc.html().replace("<br><br>", "<br>").replace("<br>", "$$$")); //将每个子项用 $$$ 分隔，便于后续处理
 
@@ -88,7 +89,7 @@ public class InfoUtils {
                 if ('第' == s.charAt(0)) { //新的一节
                     list = new ArrayList<>();
                 }
-                if(list == null) {
+                if (list == null) {
                     list = new ArrayList<>();
                 } else {
                     list.add(s);
@@ -100,7 +101,7 @@ public class InfoUtils {
             for (CourseInfo courseInfo : courseInfos) {
                 System.out.println(courseInfo);
             }
-//        }
+        }
         return curriculumInfos;
     }
 
