@@ -29,8 +29,8 @@ public class Login {
 
     private static String viewState = null; //登录页面隐藏字段
 
-    private static String aco = "3114006091";
-    private static String pwwwd = "huangtao123";
+    private static String aco = "";
+    private static String pwwwd = "";
 
     /**
      * 输入信息 及 登录

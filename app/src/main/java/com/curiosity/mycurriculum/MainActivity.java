@@ -3,11 +3,18 @@ package com.curiosity.mycurriculum;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -34,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn;
     private EditText et;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +49,41 @@ public class MainActivity extends AppCompatActivity {
         im = (ImageView) findViewById(R.id.code);
         et = (EditText) findViewById(R.id.title);
         btn = (Button) findViewById(R.id.login);
+
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar
+                , R.string.open_drawer, R.string.close_drawer);
+        mDrawerToggle.syncState();
+        drawerLayout.addDrawerListener(mDrawerToggle);
+
+
+        final NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.zhihuitem:
+                        Toast.makeText(MainActivity.this, "1", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.topnewsitem:
+                        Toast.makeText(MainActivity.this, "2", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.meiziitem:
+                        Toast.makeText(MainActivity.this, "3", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                item.setChecked(true);
+                drawerLayout.closeDrawers();
+                return true;
+            }
+        });
+
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -100,9 +143,7 @@ public class MainActivity extends AppCompatActivity {
                                 im.setImageBitmap(bitmap);
                             }
                         });
-                        String c1 = response.header("Set-Cookie");
-
-                        cookie = c1;
+                        cookie = response.header("Set-Cookie");
                         getViewState(host, cookie);
 //						Log.d("myd", "code cookie:" + c1);
                     } else {
@@ -133,7 +174,8 @@ public class MainActivity extends AppCompatActivity {
 
             while ((tmp = br.readLine()) != null) {
 //                            Log.d("myd", tmp);
-                sb.append(tmp + "\n");
+                sb.append(tmp);
+                sb.append("\n");
             }
             viewstate = Jsoup.parse(sb.toString()).select("input[name=__VIEWSTATE]").val();
             Log.d("myd", viewstate);
@@ -200,7 +242,8 @@ public class MainActivity extends AppCompatActivity {
 
                         while ((tmp = br.readLine()) != null) {
                             Log.d("myd", tmp);
-                            sb.append(tmp + "\n");
+                            sb.append(tmp);
+                            sb.append("\n");
                         }
                         String name = Jsoup.parse(sb.toString()).getElementById("xhxm").text();
                         Log.d("myd", name);
