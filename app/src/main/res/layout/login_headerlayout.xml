@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    android:background="@drawable/background_material">
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/institute"
+        android:gravity="start"
+        android:paddingBottom="4dp"
+        android:text="@string/usr_name"
+        android:layout_marginStart="24dp"
+        android:textColor="#FFF"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/institute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/username"
+        android:layout_above="@+id/major"
+        android:layout_marginBottom="8dp"
+        android:gravity="start"
+        android:text="@string/usr_institute"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/major"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/username"
+        android:layout_marginBottom="8dp"
+        android:gravity="start"
+        android:text="@string/usr_major"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/clas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/major"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="start"
+        android:text="@string/usr_class"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:textStyle="bold"/>
+</RelativeLayout>

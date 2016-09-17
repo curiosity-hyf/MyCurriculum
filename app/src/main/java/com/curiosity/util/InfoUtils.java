@@ -1,4 +1,4 @@
-package com.curiosity.utils;
+package com.curiosity.util;
 
 import com.curiosity.bean.CourseInfo;
 import com.curiosity.bean.CurriculumInfo;
@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class InfoUtils {
 
+    private InfoUtils(){}
     /**
      * 获取学生信息
      *
@@ -52,7 +53,6 @@ public class InfoUtils {
 
     /**
      * 获取所有课程信息
-     *
      * @param curriculums 所有课表 Dom
      * @return 所有课程信息
      */

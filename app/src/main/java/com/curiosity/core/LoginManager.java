@@ -1,7 +1,8 @@
 package com.curiosity.core;
 
 import com.curiosity.bean.CurriculumInfo;
-import com.curiosity.utils.InfoUtils;
+import com.curiosity.exception.VerifyException;
+import com.curiosity.util.InfoUtils;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -19,7 +20,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 
-public class Login {
+public class LoginManager {
 
     private static final int TIME_OUT = 60 * 1000;
 
@@ -32,10 +33,21 @@ public class Login {
     private static String aco = "";
     private static String pwwwd = "";
 
+    private static LoginManager manager = new LoginManager();
+
+    private LoginManager() {
+    }
+
+    public static LoginManager getInstance() {
+        return manager;
+    }
+
     /**
      * 输入信息 及 登录
+     * @throws IOException
+     * @throws VerifyException
      */
-    public void accessView() throws IOException {
+    public void accessView() throws IOException, VerifyException {
         postData = new HashMap<>();
         getVerifyCode();
 
@@ -94,7 +106,7 @@ public class Login {
      * @return 状态码是否为 302  是则验证成功 否则验证失败
      * @throws IOException
      */
-    private boolean getAccess() throws IOException {
+    private boolean getAccess() throws IOException{
         Connection.Response response = Jsoup
                 .connect("http://jwgl.gdut.edu.cn/default2.aspx")
                 .cookies(cookie)
@@ -182,14 +194,13 @@ public class Login {
     private List<CurriculumInfo> curriculumInfos = null;
     private List<Document> curriculums = null;
 
-    private void getAllInfo() throws IOException {
+    private void getAllInfo() throws IOException, VerifyException {
         if (getAccess()) {
-            Document doc = getStuInfoDoc();
-            InfoUtils.getStuInfo(doc);
+            InfoUtils.getStuInfo(getStuInfoDoc());
             curriculums = getAllCurriDom();
             curriculumInfos = InfoUtils.getAllCurriInfo(curriculums);
         } else {
-            System.out.println("登录错误!");
+            throw new VerifyException();
         }
     }
 }

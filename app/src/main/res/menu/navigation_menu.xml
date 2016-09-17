@@ -6,9 +6,9 @@
         android:id="@+id/g1"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/zhihuitem"
+            android:id="@+id/login"
             android:checkable="true"
-            android:title="1"
+            android:title="@string/login"
             android.support.design:itemTextColor="@color/nev_item"
             />
         <item

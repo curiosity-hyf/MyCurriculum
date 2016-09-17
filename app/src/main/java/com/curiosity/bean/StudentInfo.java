@@ -1,12 +1,12 @@
 package com.curiosity.bean;
 
 public class StudentInfo {
-    private String admission;
-    private String stuNum;
-    private String name;
-    private String institute;
-    private String major;
-    private String clas;
+    private String admission; //入学年份
+    private String stuNum; //学号
+    private String name; //姓名
+    private String institute; //学院
+    private String major; //专业
+    private String clas; //班级
 
     public StudentInfo() {
     }

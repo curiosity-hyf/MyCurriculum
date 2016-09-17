@@ -1,4 +1,4 @@
-package com.curiosity.utils;
+package com.curiosity.util;
 
 import com.curiosity.bean.CourseInfo;
 
@@ -10,6 +10,8 @@ import java.util.List;
  * 该工具类用于 文本的处理
  */
 public class TextUtils {
+
+    private TextUtils() {}
 
     private static String getName(String s) {
         return s;

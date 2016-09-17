@@ -2,4 +2,11 @@
     <string name="app_name">MyCurriculum</string>
     <string name="open_drawer">开启抽屉</string>
     <string name="close_drawer">关闭抽屉</string>
+    <string name="login">登录</string>
+    <string name="usr_name">姓名</string>
+    <string name="usr_institute">学院</string>
+    <string name="usr_major">专业</string>
+    <string name="usr_class">班级</string>
+    <string name="unlogin">未登录</string>
+    <string name="logout">退出登录</string>
 </resources>

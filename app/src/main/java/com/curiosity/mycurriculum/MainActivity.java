@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.curiosity.fragment.LoginFragment;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -38,9 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView im;
     private String cookie;
     private String viewstate;
-    private Button btn;
+    private Button login;
     private EditText et;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +50,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         im = (ImageView) findViewById(R.id.code);
         et = (EditText) findViewById(R.id.title);
-        btn = (Button) findViewById(R.id.login);
-
-
+        login = (Button) findViewById(R.id.login);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,10 +67,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.zhihuitem:
-                        Toast.makeText(MainActivity.this, "1", Toast.LENGTH_SHORT).show();
+                    case R.id.login:
+                        if(getSupportFragmentManager().findFragmentById(R.id.frag) != null) {
+                            break;
+                        }
+                        LoginFragment loginFragment = new LoginFragment();
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frag, loginFragment);
+                        transaction.commit();
                         break;
                     case R.id.topnewsitem:
+                        navigationView.removeHeaderView(navigationView.getHeaderView(0));
+                        navigationView.inflateHeaderView(R.layout.login_headerlayout);
                         Toast.makeText(MainActivity.this, "2", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.meiziitem:
@@ -102,11 +110,11 @@ public class MainActivity extends AppCompatActivity {
         }).start();
 
        /* getCode();
-        btn.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("myd", "login...!");
-                Login(user, pwd, et.getText().toString());
+                LoginManager(user, pwd, et.getText().toString());
             }
         });*/
     }
