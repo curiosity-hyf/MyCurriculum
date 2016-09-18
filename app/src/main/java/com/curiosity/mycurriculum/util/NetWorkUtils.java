@@ -1,4 +1,4 @@
-package com.curiosity.util;
+package com.curiosity.mycurriculum.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

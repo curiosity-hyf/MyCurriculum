@@ -1,6 +1,6 @@
-package com.curiosity.util;
+package com.curiosity.mycurriculum.util;
 
-import com.curiosity.bean.CourseInfo;
+import com.curiosity.mycurriculum.bean.CourseInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;

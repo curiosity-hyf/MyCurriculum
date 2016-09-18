@@ -1,4 +1,4 @@
-package com.curiosity.exception;
+package com.curiosity.mycurriculum.exception;
 
 /**
  * Created by Curiosity on 2016-9-17.

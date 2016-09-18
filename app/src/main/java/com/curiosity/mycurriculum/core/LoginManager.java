@@ -1,8 +1,8 @@
-package com.curiosity.core;
+package com.curiosity.mycurriculum.core;
 
-import com.curiosity.bean.CurriculumInfo;
-import com.curiosity.exception.VerifyException;
-import com.curiosity.util.InfoUtils;
+import com.curiosity.mycurriculum.bean.CurriculumInfo;
+import com.curiosity.mycurriculum.exception.VerifyException;
+import com.curiosity.mycurriculum.util.InfoUtils;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;

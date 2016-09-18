@@ -1,4 +1,4 @@
-package com.curiosity.bean;
+package com.curiosity.mycurriculum.bean;
 
 import java.util.List;
 

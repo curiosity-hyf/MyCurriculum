@@ -1,4 +1,4 @@
-package com.curiosity.fragment;
+package com.curiosity.mycurriculum.fragment;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;

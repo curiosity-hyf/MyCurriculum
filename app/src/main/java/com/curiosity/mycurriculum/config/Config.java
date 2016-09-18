@@ -1,4 +1,4 @@
-package com.curiosity.config;
+package com.curiosity.mycurriculum.config;
 
 /**
  * Created by Curiosity on 2016-9-17.

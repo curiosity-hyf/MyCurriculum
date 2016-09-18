@@ -1,4 +1,4 @@
-package com.curiosity.bean;
+package com.curiosity.mycurriculum.bean;
 
 public class StudentInfo {
     private String admission; //入学年份

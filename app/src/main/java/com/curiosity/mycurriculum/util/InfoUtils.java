@@ -1,8 +1,8 @@
-package com.curiosity.util;
+package com.curiosity.mycurriculum.util;
 
-import com.curiosity.bean.CourseInfo;
-import com.curiosity.bean.CurriculumInfo;
-import com.curiosity.bean.StudentInfo;
+import com.curiosity.mycurriculum.bean.CourseInfo;
+import com.curiosity.mycurriculum.bean.CurriculumInfo;
+import com.curiosity.mycurriculum.bean.StudentInfo;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
