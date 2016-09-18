@@ -12,9 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.curiosity.fragment.LoginFragment;
@@ -38,19 +35,14 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView im;
     private String cookie;
     private String viewstate;
-    private Button login;
-    private EditText et;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        im = (ImageView) findViewById(R.id.code);
-        et = (EditText) findViewById(R.id.title);
-        login = (Button) findViewById(R.id.login);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -68,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.login:
-                        if(getSupportFragmentManager().findFragmentById(R.id.frag) != null) {
+                        if (getSupportFragmentManager().findFragmentById(R.id.frag) != null) {
                             break;
                         }
                         LoginFragment loginFragment = new LoginFragment();
@@ -101,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                             .timeout(5000).get();
                     Elements links = doc.body().getElementsByTag("a");
                     for (Element link : links) {
-                        Log.d("myd" , link.text() + " " + link.attr("href"));
+                        Log.d("myd", link.text() + " " + link.attr("href"));
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -145,12 +137,12 @@ public class MainActivity extends AppCompatActivity {
 
 //						Log.d("myd", "succeed!");
                         final Bitmap bitmap = BitmapFactory.decodeStream(is);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                im.setImageBitmap(bitmap);
-                            }
-                        });
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                im.setImageBitmap(bitmap);
+//                            }
+//                        });
                         cookie = response.header("Set-Cookie");
                         getViewState(host, cookie);
 //						Log.d("myd", "code cookie:" + c1);
@@ -192,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return null;
     }
+
     /**
      * 登录
      *
