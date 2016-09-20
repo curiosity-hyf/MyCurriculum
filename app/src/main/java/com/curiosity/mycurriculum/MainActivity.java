@@ -17,9 +17,6 @@ import com.curiosity.mycurriculum.activity.BaseActivity;
 import com.curiosity.mycurriculum.fragment.LoginFragment;
 
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -47,7 +44,7 @@ public class MainActivity extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar
                 , R.string.open_drawer, R.string.close_drawer);
         mDrawerToggle.syncState();
@@ -83,7 +80,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-
+/*
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -100,7 +97,7 @@ public class MainActivity extends BaseActivity {
                 }
             }
         }).start();
-
+*/
        /* getCode();
         login.setOnClickListener(new View.OnClickListener() {
             @Override
